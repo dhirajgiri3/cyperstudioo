@@ -1,0 +1,197 @@
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import Sidebar from "../Sidebar/Sidebar";
+import logo from "../../../../Assests/cyper-white-transparent-05.png";
+
+const Container = styled.div`
+  width: 100vw;
+  height: 11vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  color: #fff;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 0;
+  transition: all 0.3s ease-in-out, transform 0.5s ease-in-out;
+  overflow: hidden;
+  background: ${(props) => props.bg};
+
+  @media screen and (max-width: 1000px) {
+    padding: 2rem;
+    height: 8vh;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      text-decoration: none;
+      mix-blend-mode: difference;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      top: 3.5vh;
+      margin-bottom: 6.5vh;
+
+      @media screen and (max-width: 1000px) {
+        margin-bottom: 5.5vh;
+        top: 3vh;
+      }
+
+      img {
+        width: 53px;
+        height: 53px;
+        object-fit: cover;
+        mix-blend-mode: difference;
+        transition: all 0.3s ease-in-out;
+
+        @media screen and (max-width: 1600px) {
+          width: 40px;
+          height: 40px;
+        }
+
+        @media screen and (max-width: 1000px) {
+          width: 36px;
+          height: 36px;
+        }
+      }
+    }
+
+    label {
+      position: fixed;
+      top: 1.7vh;
+      right: 2rem;
+      z-index: 103;
+      background: #fff;
+      height: 70px;
+      width: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0.2rem;
+
+      @media screen and (max-width: 1600px) {
+        width: 60px;
+        height: 60px;
+      }
+
+      @media screen and (max-width: 1000px) {
+        top: 1.7vh;
+        height: 40px;
+        width: 40px;
+      }
+
+      @media screen and (max-width: 500px) {
+        &:hover {
+          scale: 1.1;
+        }
+      }
+    }
+
+    .hamburger {
+      cursor: pointer;
+    }
+
+    .hamburger input {
+      display: none;
+    }
+
+    .hamburger svg {
+      height: 3em;
+      transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .line {
+      fill: none;
+      stroke: #333;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 3;
+      transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+      transition-delay: 1s;
+    }
+
+    .line-top-bottom {
+      stroke-dasharray: 12 63;
+      stroke-dashoffset: 0;
+    }
+
+    .hamburger input:checked + svg {
+      transform: rotate(-45deg);
+    }
+
+    .hamburger input:checked + svg .line-top-bottom {
+      stroke-dasharray: 20 300;
+      stroke-dashoffset: -32.42;
+    }
+  }
+`;
+
+const Sidebars = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(37deg, #000, #111);
+  display: flex;
+  flex-direction: column;
+  z-index: 102;
+  transition: transform 0.5s cubic-bezier(0.5, 0.05, 0.1, 0.9);
+  transform: ${(props) => (props.open ? "translateX(0)" : "translateX(-100%)")};
+  transition-delay: ${(props) => (props.open ? "0s" : "0.5s")};
+
+  &::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
+`;
+
+function Header({ bg }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <Container bg={bg} open={isOpen}>
+      <div className="header">
+        <Link className="logo" to="/">
+          <img src={logo} alt="Cyper Studio" />
+        </Link>
+
+        <label className="hamburger">
+          <input type="checkbox" checked={isOpen} onChange={handleToggle} />
+          <svg viewBox="0 0 32 32">
+            <path
+              className="line line-top-bottom"
+              d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+            ></path>
+            <path className="line" d="M7 16 27 16"></path>
+          </svg>
+        </label>
+      </div>
+
+      <Sidebars open={isOpen}>
+        <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+      </Sidebars>
+    </Container>
+  );
+}
+
+export default Header;

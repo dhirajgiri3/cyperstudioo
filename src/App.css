@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+@font-face {
+  font-family: "montreal";
+  src: url("../src/Assests/Fonts/NeueMontreal-Regular.otf");
+}
+
+@font-face {
+  font-family: "montreal-mid";
+  src: url("../src/Assests/Fonts/NeueMontreal-Medium.otf");
+}
+@font-face {
+  font-family: "canvas";
+  src: url("../src/Assests/Fonts/canvas.otf");
+}
+@font-face {
+  font-family: "wangi";
+  src: url("../src/Assests/Fonts/Wangi.ttf");
+}
+@font-face {
+  font-family: "dream-aveneue";
+  src: url("../src/Assests/Fonts/Dream-Avenue.ttf");
+}
+@font-face {
+  font-family: "gilroy";
+  src: url("../src/Assests/Fonts/gilroy-regular.ttf");
+}
+@font-face {
+  font-family: "circular";
+  src: url("../src/Assests/Fonts/Circular.otf");
+}
+@font-face {
+  font-family: "gilroy-extrabold";
+  src: url("../src/Assests/Fonts/Gilroy-ExtraBold.otf");
+}
+@font-face {
+  font-family: "lucotecia-bold";
+  src: url("../src/Assests/Fonts/Lucotecia-Bold.ttf");
+}
+@font-face {
+  font-family: "marvello";
+  src: url("../src/Assests/Fonts/Marvello-Regular.otf");
+}
+
+@font-face {
+  font-family: "oregon";
+  src: url("../src/Assests/Fonts/Oregon-LDO-Medium.ttf");
+}
+
+.ram {
+  color: #02051a;
+  color: #00bbff;
+}

@@ -1,0 +1,90 @@
+
+import React from "react";
+import styled from "styled-components";
+import { Tilt } from "react-tilt";
+import capsule from "../../Assests/capsule-rem.png";
+import ater from "../../Assests/ater-3-remove.png";
+import statue from "../../Assests/3d-lazarev.png";
+
+const defaultOptions = {
+  max: 50,
+  scale: 1,
+  speed: 500,
+  transition: true,
+  axis: null,
+  reset: true,
+  easing: "cubic-bezier(.03,.98,.52,.99)",
+  perspective: 1000,
+  glare: true,
+  "max-glare": 1,
+  gyroscope: true,
+  gyroscopeMinAngleX: -45,
+  gyroscopeMaxAngleX: 45,
+  gyroscopeMinAngleY: -45,
+  gyroscopeMaxAngleY: 45,
+  trackOnWindow: true,
+};
+
+const Container = styled.div`
+  min-height: 100vh;
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+  position: relative;
+  
+  
+  .content {
+    position: relative;
+    z-index: 2;
+    padding: 0 2rem;
+    padding-top: 6rem;
+  }
+`;
+
+const ImageWrapper = styled(Tilt)`
+  height: 40rem;
+  width: 20rem;
+  position: absolute;
+  overflow: hidden;
+  z-index: 1;
+  bottom: 0;
+  right: 5vw;
+
+  @media screen and (max-width: 768px) {
+    right: 10vw;
+  }
+
+  img {
+    height: 30rem;
+    min-height: 60vh;
+  }
+`;
+
+function Hero2() {
+  return (
+    <Container>
+      <ImageWrapper options={defaultOptions}>
+        <img src={statue} alt="owned by lazarev.agency" />
+      </ImageWrapper>
+
+      <div className="content">
+        <h1>Cyper Studio</h1>
+      </div>
+    </Container>
+  );
+}
+
+export default Hero2;
+
+
+####### outlined text
+
+      color: transparent;
+      -webkit-text-stroke: 1px #ffffff; /* Add a stroke around the text */
+      background-image: url("path/to/transparent-image.png"); /* Add your transparent image URL here */
+      background-clip: text; /* Clip the background image to the text */
+      -webkit-background-clip: text; /* For Safari support */
+      text-shadow: none; /* Remove the text shadow */
+
+
+      #####################
